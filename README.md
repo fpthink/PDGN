@@ -40,7 +40,7 @@ by Le Hui, Rui Xu, Jin Xie, Jianjun Qian, and  Jian Yang, details are in [paper]
 
 ### Citation
 
-If you find the code or trained models useful, please consider citing:
+If you find the code useful, please consider citing:
 
 ```
 @inproceedings{hui2020pdgn,
@@ -50,3 +50,7 @@ If you find the code or trained models useful, please consider citing:
   year={2020}
 }
 ```
+
+### Acknowledgement
+
+Our Cuda code is from [PointWeb](https://github.com/hszhao/PointWeb)
