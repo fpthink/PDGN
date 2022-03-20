@@ -6,9 +6,6 @@ import random
 import numpy as np
 import torch
 
-# ----------------------------------------------
-
-
 from models.PDGN_v1 import PDGN_v1
 
 
