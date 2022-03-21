@@ -6,7 +6,13 @@ import random
 import numpy as np
 import torch
 
-from models.PDGN_v1 import PDGN_v1
+# ----------------------------------------------
+
+
+from models.PDGNet import PDGNet
+from models.PDGNet_v2 import PDGNet_v2
+
+
 
 
 # ----------------------------------------------
@@ -25,8 +31,7 @@ def parse_args():
     parser.add_argument('--noise_dim', type=int, default=128, help='dimensional of noise')
     parser.add_argument('--optimizer', default='adam', help='adam or momentum [default: adam]')
     parser.add_argument('--debug', type=bool, default = True,  help='print log')
-    parser.add_argument('--data_root', default='/test/dataset/3d_datasets/shapenetcore_partanno_segmentation_benchmark_v0/', help='data root [default: xxx]')
-    #parser.add_argument('--data_root', default='/test/shapenetcore_partanno_segmentation_benchmark_v0/', help='data root [default: xxx]')
+    parser.add_argument('--data_root', default='../data/shapenet.hdf5', help='data root [default: xxx]')
     parser.add_argument('--log_info', default='log_info.txt', help='log_info txt')
     parser.add_argument('--model_dir', help='model dir [default: None, must input]')
     parser.add_argument('--checkpoint_dir', default='checkpoint', help='Checkpoint dir [default: checkpoint]')
@@ -37,7 +42,11 @@ def parse_args():
     parser.add_argument('--pretrain_model_G', default=None, help='use the pretrain model G')
     parser.add_argument('--pretrain_model_D', default=None, help='use the pretrain model D')
     parser.add_argument('--softmax', default='True', help='softmax for bilaterl interpolation')
-    parser.add_argument('--dataset', default='shapenet', help='choice dataset [shapenet, modelnet10, modelnet40]')
+    parser.add_argument('--dataset', default='shapenet15k', help='choice dataset [shapenet15k, modelnet10, modelnet40]')
+    parser.add_argument('--normalize', type=str, default='shape_bbox', choices=[None, 'shape_unit', 'shape_bbox'])
+    parser.add_argument('--seed', type=int, default=9999)
+    parser.add_argument('--save_dir', type=str, default='./results')
+    parser.add_argument('--device', type=str, default='cuda')
     return check_args(parser.parse_args())
 
 """
@@ -82,8 +91,10 @@ def main():
 
     # create model
     print('****************network: {}****************'.format(args.network))
-    if args.network == 'PDGN_v1':
-        gan = PDGN_v1(args)
+    if args.network == 'PDGNet':
+        gan = PDGNet(args)
+    elif args.network == 'PDGNet_v2':
+        gan = PDGNet_v2(args)
     else:
 
         print('select model error!!!')
