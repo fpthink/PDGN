@@ -7,8 +7,10 @@
 
 extern THCState *state;
 
-#define CHECK_CUDA(x) AT_CHECK(x.type().is_cuda(), #x, " must be a CUDAtensor ")
-#define CHECK_CONTIGUOUS(x) AT_CHECK(x.is_contiguous(), #x, " must be contiguous ")
+// #define CHECK_CUDA(x) AT_CHECK(x.type().is_cuda(), #x, " must be a CUDAtensor ")
+// #define CHECK_CONTIGUOUS(x) AT_CHECK(x.is_contiguous(), #x, " must be contiguous ")
+#define CHECK_CUDA(x) TORCH_CHECK(x.type().is_cuda(), #x, " must be a CUDAtensor ")
+#define CHECK_CONTIGUOUS(x) TORCH_CHECK(x.is_contiguous(), #x, " must be contiguous ")
 #define CHECK_INPUT(x) CHECK_CUDA(x);CHECK_CONTIGUOUS(x)
 
 
@@ -21,7 +23,8 @@ void featuredistribute_cuda(int b, int n, int m, at::Tensor max_xyz_tensor, at::
     const float *xyz = xyz_tensor.data<float>();
     int *distribute_idx = distribute_idx_tensor.data<int>();
 
-    cudaStream_t stream = THCState_getCurrentStream(state);
+    // cudaStream_t stream = THCState_getCurrentStream(state);
+    cudaStream_t stream = c10::cuda::getCurrentCUDAStream();
 
     featuredistribute_cuda_launcher(b, n, m, max_xyz, xyz, distribute_idx, stream);
 }
@@ -36,7 +39,8 @@ void featuregather_forward_cuda(int b, int n, int m, int c, at::Tensor max_featu
     const int *distribute_idx = distribute_idx_tensor.data<int>();
     float *distribute_feature = distribute_feature_tensor.data<float>();
 
-    cudaStream_t stream = THCState_getCurrentStream(state);
+    // cudaStream_t stream = THCState_getCurrentStream(state);
+    cudaStream_t stream = c10::cuda::getCurrentCUDAStream();
 
     featuregather_forward_cuda_launcher(b, n, m, c, max_feature, distribute_idx, distribute_feature, stream);
 }
@@ -51,7 +55,8 @@ void featuregather_backward_cuda(int b, int n, int m, int c, at::Tensor grad_dis
     const int *distribute_idx = distribute_idx_tensor.data<int>();
     float *grad_max_feature = grad_max_feature_tensor.data<float>();
 
-    cudaStream_t stream = THCState_getCurrentStream(state);
+    // cudaStream_t stream = THCState_getCurrentStream(state);
+    cudaStream_t stream = c10::cuda::getCurrentCUDAStream();
 
     featuregather_backward_cuda_launcher(b, n, m, c, grad_distribute_feature, distribute_idx, grad_max_feature, stream);
 }

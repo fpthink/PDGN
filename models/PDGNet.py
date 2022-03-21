@@ -305,7 +305,7 @@ class PDGNet(object):
         # Reference Point Clouds
         ref_pcs = []
         for i, data in enumerate(test_dset):
-            _,_,_,p4,_ = data
+            _, _, _, p4, _ = data
             ref_pcs.append(p4.unsqueeze(0))
         ref_pcs = torch.cat(ref_pcs, dim=0)
 
@@ -314,7 +314,7 @@ class PDGNet(object):
         for i in tqdm(range(0, math.ceil(len(test_dset) / self.batch_size)), 'Generate'):
             with torch.no_grad():
                 z = torch.randn([self.batch_size, 128]).cuda()
-                _,_,_,x = self.generator(z)
+                _, _, _, x = self.generator(z)
                 x = x.transpose(2, 1)
                 gen_pcs.append(x.detach().cpu())
         gen_pcs = torch.cat(gen_pcs, dim=0)[:len(test_dset)]
@@ -429,7 +429,7 @@ class PDGNet(object):
 import nn_utils
 
 def get_edge_features(x, k, num=-1):
-    """
+    r"""
     Args:
         x: point cloud [B, dims, N]
         k: kNN neighbours
@@ -469,7 +469,7 @@ def get_edge_features(x, k, num=-1):
     return ee
 
 def get_edge_features_xyz(x, pc, k, num=-1):
-    """
+    r"""
     Args:
         x: point cloud [B, dims, N]
         k: kNN neighbours
@@ -520,7 +520,8 @@ def get_edge_features_xyz(x, pc, k, num=-1):
     return e_fea, e_xyz
 
 class conv2dbr(nn.Module):
-    """ Conv2d-bn-relu
+    r"""
+    Conv2d-bn-relu
     [B, Fin, H, W] -> [B, Fout, H, W]
     """
     def __init__(self, Fin, Fout, kernel_size, stride=1):
@@ -536,7 +537,8 @@ class conv2dbr(nn.Module):
         return x
 
 class upsample_edgeConv(nn.Module):
-    """ Edge Convolution using 1x1 Conv h
+    r"""
+    Edge Convolution using 1x1 Conv h
     [B, Fin, N] -> [B, Fout, N]
     """
     def __init__(self, Fin, Fout, k, num):
@@ -584,7 +586,8 @@ class upsample_edgeConv(nn.Module):
         return x
 
 class bilateral_upsample_edgeConv(nn.Module):
-    """ Edge Convolution using 1x1 Conv h
+    r"""
+    Edge Convolution using 1x1 Conv h
     [B, Fin, N] -> [B, Fout, N]
     """
     def __init__(self, Fin, Fout, k, num, softmax=True):
@@ -662,7 +665,8 @@ class bilateral_upsample_edgeConv(nn.Module):
         return x
 
 class edgeConv(nn.Module):
-    """ Edge Convolution using 1x1 Conv h
+    r"""
+    Edge Convolution using 1x1 Conv h
     [B, Fin, N] -> [B, Fout, N]
     """
     def __init__(self, Fin, Fout, k):

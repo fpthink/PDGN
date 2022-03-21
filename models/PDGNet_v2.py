@@ -19,7 +19,6 @@ from datasets_4point import ShapeNetCore,ModelNetDataset
 from utils.misc import *
 from utils.data import *
 from evaluation.evaluation_metrics import *
-# from dataset import ShapeNetCore
 from utils import chamfer_loss
 cudnn.benchnark=True
 from tqdm.auto import tqdm
@@ -438,7 +437,7 @@ class PDGNet_v2(object):
 import nn_utils
 
 def get_edge_features(x, k, num=-1):
-    """
+    r"""
     Args:
         x: point cloud [B, dims, N]
         k: kNN neighbours
@@ -478,7 +477,7 @@ def get_edge_features(x, k, num=-1):
     return ee
 
 def get_edge_features_xyz(x, pc, k, num=-1):
-    """
+    r"""
     Args:
         x: point cloud [B, dims, N]
         k: kNN neighbours
@@ -529,7 +528,8 @@ def get_edge_features_xyz(x, pc, k, num=-1):
     return e_fea, e_xyz
 
 class conv2dbr(nn.Module):
-    """ Conv2d-bn-relu
+    r"""
+    Conv2d-bn-relu
     [B, Fin, H, W] -> [B, Fout, H, W]
     """
     def __init__(self, Fin, Fout, kernel_size, stride=1):
@@ -545,7 +545,8 @@ class conv2dbr(nn.Module):
         return x
 
 class upsample_edgeConv(nn.Module):
-    """ Edge Convolution using 1x1 Conv h
+    r"""
+    Edge Convolution using 1x1 Conv h
     [B, Fin, N] -> [B, Fout, N]
     """
     def __init__(self, Fin, Fout, k, num):
@@ -587,7 +588,8 @@ class upsample_edgeConv(nn.Module):
         return x
 
 class bilateral_upsample_edgeConv(nn.Module):
-    """ Edge Convolution using 1x1 Conv h
+    r"""
+    Edge Convolution using 1x1 Conv h
     [B, Fin, N] -> [B, Fout, N]
     """
     def __init__(self, Fin, Fout, k, num, softmax=True):
@@ -648,7 +650,8 @@ class bilateral_upsample_edgeConv(nn.Module):
         return x
 
 class edgeConv(nn.Module):
-    """ Edge Convolution using 1x1 Conv h
+    r"""
+    Edge Convolution using 1x1 Conv h
     [B, Fin, N] -> [B, Fout, N]
     """
     def __init__(self, Fin, Fout, k):
@@ -1018,5 +1021,3 @@ class PointDiscriminator_4(nn.Module):
         x3 = self.mlp(x2)
 
         return x3
-
-
