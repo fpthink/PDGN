@@ -69,7 +69,7 @@ by Le Hui, Rui Xu, Jin Xie, Jianjun Qian, and  Jian Yang, details are in [paper]
    | TreeGAN (ICCV 19) | 13.282 | 14.936 | 3.613 | 38.02 | 6.77 | 74.92 | 100.00 |
    | PointFlow (ICCV 19) | 12.474 | 13.631 | 1.856 | 41.86 | 43.38 | 66.13 | 68.40 |
    | ShapeGF (ECCV 20) | 5.996 | 13.175 | 1.785 | 48.53 | 46.71 | 56.17 | 62.69 |
-   | **PDGN (ours)** (ECCV 20) | 6.764 | 12.852 | 2.082 | 53.48 | 39.33 | 60.71 | 75.53 |
+   | **PDGN** (ECCV 20) | 6.764 | 12.852 | 2.082 | 53.48 | 39.33 | 60.71 | 75.53 |
    | DPM (CVPR 21) | 7.797 | 12.276 | 1.784 | 48.94 | 47.52 | 60.11 | 69.06 |
 
 2. Pretrained model in [Chair](https://drive.google.com/drive/folders/1V3NE5Xt__UI4EpgEPcbfb7qVfdalPM_k?usp=sharing) categroy:
