@@ -6,16 +6,8 @@ import random
 import numpy as np
 import torch
 
-# ----------------------------------------------
-
-
 from models.PDGNet import PDGNet
 from models.PDGNet_v2 import PDGNet_v2
-
-
-
-
-# ----------------------------------------------
 
 def parse_args():
     desc = "Pytorch PointGAN"
@@ -31,7 +23,7 @@ def parse_args():
     parser.add_argument('--noise_dim', type=int, default=128, help='dimensional of noise')
     parser.add_argument('--optimizer', default='adam', help='adam or momentum [default: adam]')
     parser.add_argument('--debug', type=bool, default = True,  help='print log')
-    parser.add_argument('--data_root', default='../data/shapenet.hdf5', help='data root [default: xxx]')
+    parser.add_argument('--data_root', default='/opt/data/private/shapenet/shapenet.hdf5', help='data root [default: xxx]')
     parser.add_argument('--log_info', default='log_info.txt', help='log_info txt')
     parser.add_argument('--model_dir', help='model dir [default: None, must input]')
     parser.add_argument('--checkpoint_dir', default='checkpoint', help='Checkpoint dir [default: checkpoint]')
@@ -96,24 +88,19 @@ def main():
     elif args.network == 'PDGNet_v2':
         gan = PDGNet_v2(args)
     else:
-
         print('select model error!!!')
         exit()
-    # exit()
 
     gan.build_model()
     
-    # exit()
-
     if args.phase == 'train' :
         # cp mainly file to corresponding model dir
-
         os.system('cp main.py %s' % (os.path.join(args.checkpoint_dir, args.model_dir))) # bkp of main.py
         os.system('cp models/%s.py %s' % (args.network, os.path.join(args.checkpoint_dir, args.model_dir))) # bkp of model.py
 
         gan.train()
         print(" [*] Training finished!")
-    # exit()
+    
     if args.phase == 'test' :
         gan.test()
         print(" [*] Test finished!")

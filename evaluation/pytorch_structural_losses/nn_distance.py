@@ -1,7 +1,7 @@
 import torch
 from torch.autograd import Function
 # from extensions.StructuralLosses.StructuralLossesBackend import NNDistance, NNDistanceGrad
-from metrics.StructuralLosses.StructuralLossesBackend import NNDistance, NNDistanceGrad
+from metrics.pytorch_structural_losses.StructuralLossesBackend import NNDistance, NNDistanceGrad
 
 # Inherit from Function
 class NNDistanceFunction(Function):
