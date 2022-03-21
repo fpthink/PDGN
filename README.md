@@ -57,8 +57,16 @@ by Le Hui, Rui Xu, Jin Xie, Jianjun Qian, and  Jian Yang, details are in [paper]
       --phase test
    ```
 
+
+
 ### Results
 1. Results in Chair category (taken from paper [DPM](https://arxiv.org/pdf/2103.01458.pdf)):
+
+   <style scoped>
+   table {
+      font-size: 10px;
+   }
+   </style>
    | Model | JSD &#8595; | MMD-CD &#8595; | MMD-EMD &#8595; | COV-CD &#8593; | COV-EMD &#8593; | 1-NNA-CD &#8595; | 1-NNA-EMD &#8595; |
    |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
    | PC-GAN (ICML 18) | 6.649 | 13.436 | 3.104 | 46.23 | 22.14 | 69.67 | 100.00 |
@@ -92,5 +100,6 @@ If you find the code useful, please consider citing:
 
 ### Acknowledgement
 
-Our Cuda code is from [PointWeb](https://github.com/hszhao/PointWeb)
-Our data processing and evaluation code is from [diffusion-point-cloud](https://github.com/luost26/diffusion-point-cloud)
+Our Cuda code is from [PointWeb](https://github.com/hszhao/PointWeb).
+
+Our data processing and evaluation code is from [diffusion-point-cloud](https://github.com/luost26/diffusion-point-cloud).
