@@ -58,8 +58,8 @@ by Le Hui, Rui Xu, Jin Xie, Jianjun Qian, and  Jian Yang, details are in [paper]
    ```
 
 ### Results
-1. Reults in Chair category (taken from paper [DPM](https://arxiv.org/pdf/2103.01458.pdf)):
-   | Model | JSD $\downarrow$ | MMD-CD $\downarrow$ | MMD-EMD $\downarrow$ | COV-CD $\uparrow$ | COV-EMD $\uparrow$ | 1-NNA-CD $\downarrow$ | 1-NNA-EMD $\downarrow$ |
+1. Results in Chair category (taken from paper [DPM](https://arxiv.org/pdf/2103.01458.pdf)):
+   | Model | JSD &#8595; | MMD-CD &#8595; | MMD-EMD &#8595; | COV-CD &#8593; | COV-EMD &#8593; | 1-NNA-CD &#8595; | 1-NNA-EMD &#8595; |
    |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
    | PC-GAN (ICML 18) | 6.649 | 13.436 | 3.104 | 46.23 | 22.14 | 69.67 | 100.00 |
    | GCN-GAN (ICLR 18) | 21.708 | 15.354 | 2.213 | 39.84 | 35.09 | 77.86 | 95.80 |
@@ -70,6 +70,7 @@ by Le Hui, Rui Xu, Jin Xie, Jianjun Qian, and  Jian Yang, details are in [paper]
    | DPM (CVPR 21) | 7.797 | 12.276 | 1.784 | 48.94 | 47.52 | 60.11 | 69.06 |
 
 2. Pretrained model in [Chair](https://drive.google.com/drive/folders/1V3NE5Xt__UI4EpgEPcbfb7qVfdalPM_k?usp=sharing) categroy:
+
    (1) Download and put in path: ./checkpoint/PDGNet_v2/PDGNet_v2
    
    (2) Run the test code.
