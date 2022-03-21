@@ -62,20 +62,15 @@ by Le Hui, Rui Xu, Jin Xie, Jianjun Qian, and  Jian Yang, details are in [paper]
 ### Results
 1. Results in Chair category (taken from paper [DPM](https://arxiv.org/pdf/2103.01458.pdf)):
 
-   <style scoped>
-   table {
-      font-size: 10px;
-   }
-   </style>
    | Model | JSD &#8595; | MMD-CD &#8595; | MMD-EMD &#8595; | COV-CD &#8593; | COV-EMD &#8593; | 1-NNA-CD &#8595; | 1-NNA-EMD &#8595; |
    |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
-   | PC-GAN (ICML 18) | 6.649 | 13.436 | 3.104 | 46.23 | 22.14 | 69.67 | 100.00 |
-   | GCN-GAN (ICLR 18) | 21.708 | 15.354 | 2.213 | 39.84 | 35.09 | 77.86 | 95.80 |
-   | TreeGAN (ICCV 19) | 13.282 | 14.936 | 3.613 | 38.02 | 6.77 | 74.92 | 100.00 |
-   | PointFlow (ICCV 19) | 12.474 | 13.631 | 1.856 | 41.86 | 43.38 | 66.13 | 68.40 |
-   | ShapeGF (ECCV 20) | 5.996 | 13.175 | 1.785 | 48.53 | 46.71 | 56.17 | 62.69 |
-   | **PDGN ours** (ECCV 20) | 6.764 | 12.852 | 2.082 | 53.48 | 39.33 | 60.71 | 75.53 |
-   | DPM (CVPR 21) | 7.797 | 12.276 | 1.784 | 48.94 | 47.52 | 60.11 | 69.06 |
+   | PC-GAN <br> (ICML 18) | 6.649 | 13.436 | 3.104 | 46.23 | 22.14 | 69.67 | 100.00 |
+   | GCN-GAN <br> (ICLR 18) | 21.708 | 15.354 | 2.213 | 39.84 | 35.09 | 77.86 | 95.80 |
+   | TreeGAN <br> (ICCV 19) | 13.282 | 14.936 | 3.613 | 38.02 | 6.77 | 74.92 | 100.00 |
+   | PointFlow <br> (ICCV 19) | 12.474 | 13.631 | 1.856 | 41.86 | 43.38 | 66.13 | 68.40 |
+   | ShapeGF <br> (ECCV 20) | 5.996 | 13.175 | 1.785 | 48.53 | 46.71 | 56.17 | 62.69 |
+   | **PDGN ours** <br> (ECCV 20) | 6.764 | 12.852 | 2.082 | 53.48 | 39.33 | 60.71 | 75.53 |
+   | DPM <br> (CVPR 21) | 7.797 | 12.276 | 1.784 | 48.94 | 47.52 | 60.11 | 69.06 |
 
 2. Pretrained model in [Chair](https://drive.google.com/drive/folders/1V3NE5Xt__UI4EpgEPcbfb7qVfdalPM_k?usp=sharing) categroy:
 
